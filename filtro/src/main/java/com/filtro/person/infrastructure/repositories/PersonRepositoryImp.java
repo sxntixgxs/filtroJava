@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.naming.spi.DirStateFactory.Result;
+import javax.swing.text.html.Option;
 
 import com.filtro.config.DBConnection;
 import com.filtro.person.domain.models.Person;
@@ -150,6 +151,36 @@ public class PersonRepositoryImp implements PersonRepository{
         }catch(SQLException e){
             e.printStackTrace();
             throw new RuntimeException("Failed trying to recovery genders "+e.getMessage(),e);
+        }
+    }
+
+    @Override
+    public Optional<Person> getPersonById(int id) {
+        String query = "SELECT id,name,lastname,idcity,address,age,email,idgender FROM persons WHERE id = ?";
+        try(
+            Connection connection = dbConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query)
+        ){
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                Person person = new Person(
+                    resultSet.getInt("id"),
+                    resultSet.getString("name"),
+                    resultSet.getString("lastname"),
+                    resultSet.getInt("idcity"),
+                    resultSet.getString("address"),
+                    resultSet.getInt("age"),
+                    resultSet.getString("email"),
+                    resultSet.getInt("idgender")
+                );
+                return Optional.of(person);
+            }else{
+                return Optional.empty();
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+            throw new RuntimeException("Error al buscar persona "+e.getMessage(),e);
         }
     }
     

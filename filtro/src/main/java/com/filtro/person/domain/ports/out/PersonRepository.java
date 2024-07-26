@@ -9,6 +9,7 @@ public interface PersonRepository {
     Optional<Person> savePerson(Person person);
     List<String> findPersonBySkill(int idSkill);
     Optional<Person> updatePerson(Person person);
+    Optional<Person> getPersonById(int id);
     boolean deletePerson(int id);
     List<String> getCities();
     List<String> getGender();

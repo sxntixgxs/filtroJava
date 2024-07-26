@@ -7,6 +7,9 @@ import com.filtro.config.DBConnection;
 import com.filtro.person.application.services.PersonService;
 import com.filtro.person.infrastructure.controllers.PersonController;
 import com.filtro.person.infrastructure.repositories.PersonRepositoryImp;
+import com.filtro.skill.application.services.SkillService;
+import com.filtro.skill.infrastructure.controllers.SkillController;
+import com.filtro.skill.infrastructure.repositories.SkillRepositoryImp;
 
 public class Main {
 
@@ -15,6 +18,11 @@ public class Main {
         PersonRepositoryImp personRepository = new PersonRepositoryImp(dbConnection);
         PersonService personService = new PersonService(personRepository);
         PersonController personController = new PersonController(personService);
+
+
+        SkillRepositoryImp skillRepository = new SkillRepositoryImp(dbConnection);
+        SkillService skillService = new SkillService(skillRepository);
+        SkillController skillController = new SkillController(skillService);
         while(true){
             int choice = menu();
             switch (choice) {
@@ -22,8 +30,13 @@ public class Main {
                     personController.createPerson();
                     break;
                 case 2:
+                    personController.updatePerson();
                     break;
-
+                case 3:
+                    skillController.createSkill();
+                    break;
+                case 4:
+                    
                 case 7:
                     break;
                 default:

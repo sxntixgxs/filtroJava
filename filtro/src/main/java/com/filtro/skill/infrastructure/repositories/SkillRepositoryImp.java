@@ -38,16 +38,16 @@ public class SkillRepositoryImp implements SkillRepository{
     }
 
     @Override
-    public Optional<Skill> findSkillByName(Skill skill) {
+    public Optional<String> findSkillByName(String skill) {
         String query = "SELECT id,name FROM skill WHERE name = ?";
         try(
             Connection connection = dbConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query)
         ){
-            preparedStatement.setString(1, skill.getName());
+            preparedStatement.setString(1, skill);
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()){
-                return Optional.of(new Skill(resultSet.getInt("int"),resultSet.getString("name")));
+                return Optional.of(resultSet.getString("name"));
             }else{
                 return Optional.empty();
             }

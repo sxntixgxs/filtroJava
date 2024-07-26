@@ -7,6 +7,9 @@ public class Skill {
         this.id = id;
         this.name = name;
     }
+    public Skill(String name) {
+        this.name = name;
+    }
     public int getId() {
         return id;
     }

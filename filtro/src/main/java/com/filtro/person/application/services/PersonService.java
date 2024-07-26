@@ -43,4 +43,9 @@ public class PersonService implements PersonOperations {
     public List<String> showGenders() {
         return personRepository.getGender();
     }
+
+    @Override
+    public Optional<Person> checkPersonById(int id) {
+        return personRepository.getPersonById(id);
+    }
 }
