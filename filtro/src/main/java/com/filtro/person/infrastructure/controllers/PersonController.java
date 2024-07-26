@@ -43,6 +43,8 @@ public class PersonController {
                     sc.nextLine();
                     continue;
                 }
+                System.out.println("Presione para desplegar todas las ciudades disponibles, junto a su identificador: ");
+                sc.nextLine();
                 personService.showGenders().forEach(System.out::println);
                 sc.nextLine();
                 System.out.println("Ingrese el identificador del genero: ");
@@ -69,10 +71,15 @@ public class PersonController {
                 idPersona = sc.nextInt();
                 Optional<Person> optionalPerson = personService.checkPersonById(idPersona);
                 if(optionalPerson.isPresent()){
+                    sc.nextLine();
+                    System.out.println("Ingrese el nombre -sin apellido- ");
                     String name = sc.nextLine();
-                    String lastname = sc.nextLine();
-                    String address = sc.nextLine();
+                    System.out.println("Ingrese el apellido");
+                    String surname = sc.nextLine();
+                    System.out.println("Ingrese el email: ");
                     String email = sc.nextLine();
+                    System.out.println("Ingrese la direccion ");
+                    String address = sc.nextLine();
                     int idCity = 0;
                     int idGender = 0;
             while(true){
@@ -104,7 +111,7 @@ public class PersonController {
                 }
             }
 
-            if(personService.updatePerson(new Person(idPersona,name, lastname, idCity, address, idGender, email, idGender)).isPresent()){
+            if(personService.updatePerson(new Person(idPersona,name, surname, idCity, address, idGender, email, idGender)).isPresent()){
                 System.out.println("Actualizado con éxito. ");
                 break;
             }}

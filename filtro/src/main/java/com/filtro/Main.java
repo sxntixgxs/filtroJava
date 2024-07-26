@@ -29,7 +29,7 @@ public class Main {
                 case 1:
                     personController.createPerson();
                     break;
-                case 2:
+                case 5:
                     personController.updatePerson();
                     break;
                 case 3:
