@@ -13,4 +13,5 @@ public interface PersonOperations {
     boolean deletePerson(int id);
     List<String> showCities();
     List<String> showGenders();
+    Optional<Person> updatePersonSkill(Person person, int idskill);
 }

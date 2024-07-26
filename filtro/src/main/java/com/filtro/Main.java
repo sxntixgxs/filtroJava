@@ -35,13 +35,23 @@ public class Main {
                 case 3:
                     skillController.createSkill();
                     break;
-                case 4:
+                case 2:
                     
+                    personController.updatePersonSkill(skillController.skillExists().get().getId());
+
                 case 7:
                     break;
                 default:
                     break;
-            }break;
+            }
+            Scanner sc = new Scanner(System.in);
+            System.out.println("desea re-iniciar el programa? presione 1");
+            int exit = sc.nextInt();
+            if(exit==1){
+                continue;
+            }else{
+                break;
+            }
         }
     }
     public static int menu(){
@@ -70,6 +80,5 @@ public class Main {
             }
 
         }
-
     }
 }

@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 import com.filtro.person.application.services.PersonService;
 import com.filtro.person.domain.models.Person;
+import com.filtro.skill.domain.models.Skill;
+import com.filtro.skill.infrastructure.controllers.SkillController;
 
 public class PersonController {
     private final PersonService personService;
@@ -121,5 +123,28 @@ public class PersonController {
             continue;
             }
         }
+    }
+    public Optional<Person> personExists(){
+        Scanner sc = new Scanner(System.in);
+        int idPersona = 0;
+        while(true){
+            System.out.println("Ingrese el id de la persona ");
+            try {
+                idPersona = sc.nextInt();
+                Optional<Person> optionalPerson = personService.checkPersonById(idPersona);
+                return optionalPerson;
+            }catch(InputMismatchException e){
+                System.out.println("Input invalido, intente de nuevo ");
+                sc.nextLine();
+                continue;
+            }
+        }
+    }
+    public void updatePersonSkill(int idSkill){
+        Optional<Person> optionalPerson = personExists();
+        if(personService.updatePersonSkill(optionalPerson.get(), idSkill).isPresent()){
+            System.out.println("Habilidad registrada con usuario exitosamente.");
+        }
+
     }
 }

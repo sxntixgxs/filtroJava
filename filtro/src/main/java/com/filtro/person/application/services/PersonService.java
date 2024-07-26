@@ -48,4 +48,9 @@ public class PersonService implements PersonOperations {
     public Optional<Person> checkPersonById(int id) {
         return personRepository.getPersonById(id);
     }
+
+    @Override
+    public Optional<Person> updatePersonSkill(Person person, int idskill) {
+        return personRepository.updatePersonSkill(person, idskill);
+    }
 }

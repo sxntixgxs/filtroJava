@@ -56,7 +56,7 @@ CREATE TABLE persons(
 );
 CREATE TABLE persons_skill(
     id INT PRIMARY KEY AUTO_INCREMENT,
-    registration_date DATE NOT NULL,
+    registration_date DATE,
     iperson INT NOT NULL, 
     idskill INT NOT NULL,
     FOREIGN KEY (iperson) REFERENCES persons(id),

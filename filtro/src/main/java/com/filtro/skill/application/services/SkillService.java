@@ -19,7 +19,7 @@ public class SkillService implements SkillOperations{
     }
 
     @Override
-    public Optional<String> findSkillByName(String skill) {
+    public Optional<Skill> findSkillByName(String skill) {
         return skillRepository.findSkillByName(skill);
         
     }

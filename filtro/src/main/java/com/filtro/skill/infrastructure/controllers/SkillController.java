@@ -19,7 +19,7 @@ public class SkillController {
             System.out.println("Ingrese el nombre de la nueva habilidad");
             try {
                 String nombre = sc.nextLine();
-                Optional<String> optionalSkill = skillService.findSkillByName(nombre);
+                Optional<Skill> optionalSkill = skillService.findSkillByName(nombre);
                 if(!optionalSkill.isPresent()){
                     System.out.println("Registrando habilidad ...");
                     sc.nextLine();
@@ -38,5 +38,17 @@ public class SkillController {
                 continue;
             }
         }
+    }
+    public Optional<Skill> skillExists(){
+        Scanner sc = new Scanner(System.in);
+        while(true){
+            System.out.println("Ingrese el id de la habilidad");
+            try {
+                String nombre = sc.nextLine();
+                return skillService.findSkillByName(nombre);
+            }catch(InputMismatchException e){
+
+            }
+    }
     }
 }

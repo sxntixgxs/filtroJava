@@ -13,4 +13,5 @@ public interface PersonRepository {
     boolean deletePerson(int id);
     List<String> getCities();
     List<String> getGender();
+    Optional<Person> updatePersonSkill(Person person, int idSkill);
 }

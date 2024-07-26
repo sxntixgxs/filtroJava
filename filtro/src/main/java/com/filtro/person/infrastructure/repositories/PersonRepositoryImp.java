@@ -183,5 +183,26 @@ public class PersonRepositoryImp implements PersonRepository{
             throw new RuntimeException("Error al buscar persona "+e.getMessage(),e);
         }
     }
+
+    @Override
+    public Optional<Person> updatePersonSkill(Person person, int idSkill) {
+        String query = "INSERT INTO persons_skill(iperson,idskill) VALUES (?,?)";
+        try(
+            Connection connection = dbConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query)
+        ){
+            preparedStatement.setInt(1, person.getId());
+            preparedStatement.setInt(2, idSkill);
+            int rowsAff = preparedStatement.executeUpdate();
+            if(rowsAff ==1 ){
+                return Optional.of(person);
+            }else{
+                return Optional.empty();
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+            throw new RuntimeException("failed to add person skill "+e.getMessage(),e);
+        }
+    }
     
 }

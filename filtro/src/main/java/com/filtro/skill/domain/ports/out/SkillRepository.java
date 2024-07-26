@@ -6,5 +6,5 @@ import com.filtro.skill.domain.models.Skill;
 
 public interface SkillRepository {
     Optional<Skill> saveNewSkill(Skill skill);
-    Optional<String> findSkillByName(String skill);
+    Optional<Skill> findSkillByName(String skill);
 }
