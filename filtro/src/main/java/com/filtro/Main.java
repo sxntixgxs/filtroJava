@@ -36,9 +36,14 @@ public class Main {
                     skillController.createSkill();
                     break;
                 case 2:
-                    
                     personController.updatePersonSkill(skillController.skillExists().get().getId());
-
+                    break;
+                case 6:
+                    personController.deletePerson();
+                    break;
+                case 4:
+                    personController.findPersonsBySkill(skillController.skillExists().get().getId());
+                    break;
                 case 7:
                     break;
                 default:

@@ -145,6 +145,14 @@ public class PersonController {
         if(personService.updatePersonSkill(optionalPerson.get(), idSkill).isPresent()){
             System.out.println("Habilidad registrada con usuario exitosamente.");
         }
-
+    }
+    public void deletePerson(){
+        int id = personExists().get().getId();
+        if(personService.deletePerson(id)){
+            System.out.println("Eliminado con exito ...");
+        }
+    }
+    public void findPersonsBySkill(int idSkill){
+        personService.checkPersonBySkill(idSkill).forEach(System.out::println);
     }
 }
