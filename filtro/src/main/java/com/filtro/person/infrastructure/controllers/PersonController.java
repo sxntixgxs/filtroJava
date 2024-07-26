@@ -6,8 +6,6 @@ import java.util.Scanner;
 
 import com.filtro.person.application.services.PersonService;
 import com.filtro.person.domain.models.Person;
-import com.filtro.skill.domain.models.Skill;
-import com.filtro.skill.infrastructure.controllers.SkillController;
 
 public class PersonController {
     private final PersonService personService;
@@ -37,7 +35,6 @@ public class PersonController {
                 System.out.println("Presione para desplegar todas las ciudades disponibles, junto a su identificador: ");
                 sc.nextLine();
                 personService.showCities().forEach(System.out::println);
-                sc.nextLine();
                 System.out.println("Ingrese el identificador de la ciudad ");
                 idCity = sc.nextInt();
                 if(personService.showCities().size()<idCity){
@@ -48,7 +45,6 @@ public class PersonController {
                 System.out.println("Presione para desplegar todas las ciudades disponibles, junto a su identificador: ");
                 sc.nextLine();
                 personService.showGenders().forEach(System.out::println);
-                sc.nextLine();
                 System.out.println("Ingrese el identificador del genero: ");
                 idGender = sc.nextInt();
                 if(personService.showGenders().size()<idGender){

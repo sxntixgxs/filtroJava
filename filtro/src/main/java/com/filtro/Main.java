@@ -36,13 +36,13 @@ public class Main {
                     skillController.createSkill();
                     break;
                 case 2:
-                    personController.updatePersonSkill(skillController.skillExists().get().getId());
+                    personController.updatePersonSkill(skillController.getIdSkillByName());
                     break;
                 case 6:
                     personController.deletePerson();
                     break;
                 case 4:
-                    personController.findPersonsBySkill(skillController.skillExists().get().getId());
+                    personController.findPersonsBySkill(skillController.getIdSkillByName());
                     break;
                 case 7:
                     break;
@@ -50,11 +50,11 @@ public class Main {
                     break;
             }
             Scanner sc = new Scanner(System.in);
-            System.out.println("desea re-iniciar el programa? presione 1");
+            System.out.println("desea re-iniciar el programa? presione 1, para sali presione 2");
             int exit = sc.nextInt();
             if(exit==1){
                 continue;
-            }else{
+            }else if(exit==2){
                 break;
             }
         }

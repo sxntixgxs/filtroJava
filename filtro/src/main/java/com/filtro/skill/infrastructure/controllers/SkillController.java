@@ -42,13 +42,35 @@ public class SkillController {
     public Optional<Skill> skillExists(){
         Scanner sc = new Scanner(System.in);
         while(true){
+            sc.nextLine();
             System.out.println("Ingrese el id de la habilidad");
             try {
                 String nombre = sc.nextLine();
                 return skillService.findSkillByName(nombre);
             }catch(InputMismatchException e){
-
+                System.out.println("error");
+                continue;
             }
     }
+    }
+    public Integer getIdSkillByName(){
+        Scanner sc = new Scanner(System.in);
+        while(true){
+            System.out.println("Ingrese el nombre de la skill ");
+            String skill = sc.nextLine();
+            try {
+                if(skillService.findSkillByName(skill).isPresent()){
+                    return skillService.findSkillByName(skill).get().getId();
+                }
+                else{
+                    continue;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("error");
+                continue;
+            }
+        
+        }
+
     }
 }
